@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { Inter, Saira } from 'next/font/google'
 
-import { GlobalStyle } from '../GlobalStyle'
+import { GlobalStyle } from '../styles/global'
 import { ThemeProviderNext } from '@/providers/NextThemeProvider'
 
 export const metadata: Metadata = {
@@ -29,8 +29,10 @@ export default function RootLayout({
   return (
     <html lang="pt-br">
       <body className={`${inter.variable} ${saira.variable} antialiased`}>
-        <GlobalStyle />
-        <ThemeProviderNext>{children}</ThemeProviderNext>
+        <ThemeProviderNext>
+          <GlobalStyle />
+          {children}
+        </ThemeProviderNext>
       </body>
     </html>
   )
