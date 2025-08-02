@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { GlobalStyle } from '../GlobalStyle'
 
-import { Inter } from 'next/font/google'
+import { Inter, Saira } from 'next/font/google'
 
 export const metadata: Metadata = {
   title: 'InsanyShop',
@@ -14,6 +14,12 @@ const inter = Inter({
   weight: ['400', '500', '600']
 })
 
+const saira = Saira({
+  variable: '--font-saira',
+  subsets: ['latin'],
+  weight: ['500']
+})
+
 export default function RootLayout({
   children
 }: Readonly<{
@@ -21,7 +27,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-br">
-      <body className={`${inter.variable} antialiased`}>
+      <body className={`${inter.variable} ${saira.variable} antialiased`}>
         <GlobalStyle />
         {children}
       </body>
