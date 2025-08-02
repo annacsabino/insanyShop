@@ -1,7 +1,8 @@
 import type { Metadata } from 'next'
-import { GlobalStyle } from '../GlobalStyle'
-
 import { Inter, Saira } from 'next/font/google'
+
+import { GlobalStyle } from '../GlobalStyle'
+import { ThemeProviderNext } from '@/providers/NextThemeProvider'
 
 export const metadata: Metadata = {
   title: 'InsanyShop',
@@ -29,7 +30,7 @@ export default function RootLayout({
     <html lang="pt-br">
       <body className={`${inter.variable} ${saira.variable} antialiased`}>
         <GlobalStyle />
-        {children}
+        <ThemeProviderNext>{children}</ThemeProviderNext>
       </body>
     </html>
   )

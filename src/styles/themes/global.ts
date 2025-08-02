@@ -10,9 +10,9 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     line-height: 1.6;
-    color: #333;
+    color: #000;
     background-color: #fff;
   }
 
@@ -29,6 +29,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   input, textarea {
+    border: none;
     font-family: inherit;
   }
 
