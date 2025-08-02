@@ -31,4 +31,9 @@ export const GlobalStyle = createGlobalStyle`
   input, textarea {
     font-family: inherit;
   }
+
+  p {
+    font-size: 0.875rem;
+    line-height: 150%;
+  }
 `
