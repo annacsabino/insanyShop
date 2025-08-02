@@ -13,6 +13,7 @@ const buttonVariants = {
     color: #fff;
   `,
   secondary: css`
+    font-family: 'Saira', sans-serif;
     background-color: #1b9847;
     color: #fff;
     text-transform: uppercase;
@@ -21,9 +22,14 @@ const buttonVariants = {
 
 export const ButtonContainer = styled.button<ButtonContainerProps>`
   ${({ variant }) => buttonVariants[variant]}
-
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 150%;
   border: none;
   border-radius: 4px;
-  padding: 8px 16px;
+  padding: 0.5rem 1rem;
   cursor: pointer;
 `
