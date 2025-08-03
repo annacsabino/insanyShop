@@ -1,13 +1,23 @@
 import { Container, TitleSection } from '@/styles/patterns'
 import { ProductCard } from '../ProductCard'
-import { ProductSectionWrapper, ProductsWrapper } from './style'
+import {
+  ProductSectionWrapper,
+  ProductsWrapper,
+  TitleSectionWrapper,
+  DescriptionSection
+} from './style'
 import { Pagination } from '../Pagination'
 
 export function ProductSection() {
   return (
     <ProductSectionWrapper>
       <Container>
-        <TitleSection>Todos os produtos</TitleSection>
+        <TitleSectionWrapper>
+          <TitleSection>Todos os produtos</TitleSection>
+          <DescriptionSection>
+            Smartphones, laptops, consoles e mais
+          </DescriptionSection>
+        </TitleSectionWrapper>
         <ProductsWrapper>
           <ProductCard />
           <ProductCard />
