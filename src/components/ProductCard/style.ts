@@ -6,20 +6,11 @@ export const ProductCardContainer = styled.div`
   display: flex;
   flex-direction: column;
   max-width: 356px;
-  border: 1px solid #dddddd;
+  border: 1px solid ${({ theme }) => theme.colors.borderColor};
   border-radius: 1.19rem;
   overflow: hidden;
   background-color: ${({ theme }) => theme.colors.white};
   box-shadow: -6px 8px 20.4px 0 rgba(0, 0, 0, 0.04);
-
-Colors
-Hex
-Hex
-
-Background colors
-
-#FFFFFF
-
 `
 
 export const ProductContentCard = styled.div`
