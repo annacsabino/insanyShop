@@ -7,6 +7,7 @@ export const defaultTheme = {
     purple: '#A212DF',
     textDark: '#737380',
     textDarkInputs: '#41414D',
+    textBackButton: '#617480',
     bgDark: '#5D5D6D',
     bgLight: '#F3F5F6',
     borderColorCategory: '#E0E0E0',

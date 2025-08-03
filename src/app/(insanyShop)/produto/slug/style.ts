@@ -6,6 +6,12 @@ export const ProductItemSection = styled.section`
   padding: 1.66rem 0 5.56rem;
 `
 
+export const ProductPageContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1.38rem;
+`
+
 export const ProductPageContent = styled.main`
   display: flex;
   gap: 2rem;
