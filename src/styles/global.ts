@@ -10,10 +10,8 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    line-height: 1.6;
-    color: #333;
-    background-color: #fff;
+    color: ${({ theme }) => theme.colors.dark};
+    background-color: ${({ theme }) => theme.colors.bgLight};
   }
 
   a {
@@ -24,16 +22,21 @@ export const GlobalStyle = createGlobalStyle`
   button {
     cursor: pointer;
     border: none;
-    background: none;
-    font-family: inherit;
   }
 
-  input, textarea {
-    font-family: inherit;
+  body, input, textarea, button {
+    font-family: 'Inter', sans-serif;
+    line-height: 150%;
+    border: none;
   }
 
   p {
     font-size: 0.875rem;
     line-height: 150%;
+  }
+
+  :focus {
+    outline: none;
+    border: 1.5px solid ${({ theme }) => theme.colors.borderColor};
   }
 `
