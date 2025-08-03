@@ -1,3 +1,5 @@
+import Image from 'next/image'
+
 import { PaginationContainer, PaginationList, PagintionButton } from './style'
 
 export function Pagination() {
@@ -5,7 +7,14 @@ export function Pagination() {
     <PaginationContainer>
       <PaginationList>
         <PagintionButton>
-          <a href="">{'<'}</a>
+          <a href="">
+            <Image
+              src="/assets/icons/arrow-left.svg"
+              alt="Icone de uma setinha virada para esquerda"
+              width={24}
+              height={24}
+            />
+          </a>
         </PagintionButton>
         <PagintionButton isActive>
           <a href="">1</a>
@@ -20,7 +29,14 @@ export function Pagination() {
           <a href="">4</a>
         </PagintionButton>
         <PagintionButton>
-          <a href="">{'>'}</a>
+          <a href="">
+            <Image
+              src="/assets/icons/arrow-right.svg"
+              alt="Icone de uma setinha virada para esquerda"
+              width={24}
+              height={24}
+            />
+          </a>
         </PagintionButton>
       </PaginationList>
     </PaginationContainer>

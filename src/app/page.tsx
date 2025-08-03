@@ -1,11 +1,16 @@
+import { CategoriesSection } from '@/components/CategoriesSection'
 import { ProductSection } from '@/components/ProductSection'
 import { SubHeader } from '@/components/SubHeader'
 
+//Todo: Ajustar titulo do card para h3
+//Todo: Ajustar grid template do card para colocar repeat(3, 1fr)
+//Todo: Ajsutar grid das categorias para o mobile
 export default function Home() {
   return (
     <main>
       <SubHeader />
       <ProductSection />
+      <CategoriesSection />
     </main>
   )
 }

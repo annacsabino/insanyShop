@@ -1,11 +1,11 @@
 import { Container, TitleSection } from '@/styles/patterns'
 import { ProductCard } from '../ProductCard'
-import { ProductsWrapper } from './style'
+import { ProductSectionWrapper, ProductsWrapper } from './style'
 import { Pagination } from '../Pagination'
 
 export function ProductSection() {
   return (
-    <section>
+    <ProductSectionWrapper>
       <Container>
         <TitleSection>Todos os produtos</TitleSection>
         <ProductsWrapper>
@@ -21,6 +21,6 @@ export function ProductSection() {
         </ProductsWrapper>
         <Pagination />
       </Container>
-    </section>
+    </ProductSectionWrapper>
   )
 }
