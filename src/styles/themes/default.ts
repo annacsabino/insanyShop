@@ -9,6 +9,7 @@ export const defaultTheme = {
     bgLight: '#F3F5F6',
     bgDark: '#5D5D6D',
     borderColor: '#DDDDDD',
+    borderColorCategory: '#E0E0E0',
     lightGray: '#E9E9F0'
   }
 }
