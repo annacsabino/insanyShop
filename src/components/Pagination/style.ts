@@ -33,4 +33,10 @@ export const PagintionButton = styled.li<PaginationButtonProps>`
     isActive ? `1px solid ${theme.colors.purple}` : 'none'};
   border-radius: 8px;
   cursor: pointer;
+
+  a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 `
