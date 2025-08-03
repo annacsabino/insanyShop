@@ -24,6 +24,7 @@ export const ProductImageContainer = styled.div`
   img {
     object-fit: cover;
     width: 100%;
+    border-radius: 4px;
   }
 `
 export const ProductInfoContainer = styled.div`
