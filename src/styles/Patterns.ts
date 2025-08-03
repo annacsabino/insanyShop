@@ -8,3 +8,10 @@ export const Container = styled.div`
   padding: 0 1.5rem;
   margin: 0 auto;
 `
+
+export const TitleSection = styled.h2`
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 150%;
+  color: ${({ theme }) => theme.colors.dark};
+`

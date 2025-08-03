@@ -1,4 +1,4 @@
-import { Container } from '@/styles/patterns'
+import { Container, TitleSection } from '@/styles/patterns'
 import { ProductCard } from '../ProductCard'
 import { ProductsWrapper } from './style'
 
@@ -6,9 +6,8 @@ export function ProductSection() {
   return (
     <section>
       <Container>
-        <h2>Todos os produtos</h2>
+        <TitleSection>Todos os produtos</TitleSection>
         <ProductsWrapper>
-          <ProductCard />
           <ProductCard />
           <ProductCard />
           <ProductCard />
