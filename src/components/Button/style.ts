@@ -25,6 +25,7 @@ export const ButtonContainer = styled.button<ButtonContainerProps>`
   display: flex;
   gap: 1rem;
   align-items: center;
+  justify-content: center;
   font-size: 1rem;
   font-weight: 500;
   line-height: 150%;
@@ -32,4 +33,8 @@ export const ButtonContainer = styled.button<ButtonContainerProps>`
   border-radius: 4px;
   padding: 0.5rem 1rem;
   cursor: pointer;
+  transition: opacity 0.2s ease-in-out;
+  &:hover {
+    opacity: 0.85;
+  }
 `
