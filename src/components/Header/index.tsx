@@ -1,14 +1,34 @@
-import Image from 'next/image'
-
-import { HeaderLogo, InputSearch } from './style'
+import { Container } from '@/styles/patterns'
+import {
+  HeaderContainer,
+  HeaderLogo,
+  NavContent,
+  SearchContainer,
+  InputSearch,
+  SearchIcon,
+  CartIcon,
+  HeaderActions
+} from './style'
 
 export function Header() {
   return (
-    <nav>
-      <HeaderLogo>InsanyShop</HeaderLogo>
-      <div>
-        <InputSearch type="search" />
-      </div>
-    </nav>
+    <HeaderContainer>
+      <Container>
+        <NavContent>
+          <HeaderLogo>InsanyShop</HeaderLogo>
+          <HeaderActions>
+            <SearchContainer>
+              <InputSearch
+                type="search"
+                placeholder="Procurando por algo específico?"
+                aria-label="Campo de busca de produtos"
+              />
+              <SearchIcon />
+            </SearchContainer>
+            <CartIcon />
+          </HeaderActions>
+        </NavContent>
+      </Container>
+    </HeaderContainer>
   )
 }

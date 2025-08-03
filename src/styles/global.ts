@@ -37,7 +37,6 @@ export const GlobalStyle = createGlobalStyle`
 
   :focus {
     outline: none;
-    border: 1px solid ${({ theme }) => theme.colors.borderColor};
-    box-shadow: -6px 8px 20.4px 0 rgba(0, 0, 0, 0.04);
+    border: 1.5px solid ${({ theme }) => theme.colors.borderColor};
   }
 `

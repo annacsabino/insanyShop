@@ -3,6 +3,7 @@ import { Inter, Saira } from 'next/font/google'
 
 import { GlobalStyle } from '../styles/global'
 import { ThemeProviderNext } from '@/providers/NextThemeProvider'
+import { Header } from '@/components/Header'
 
 export const metadata: Metadata = {
   title: 'InsanyShop',
@@ -31,6 +32,7 @@ export default function RootLayout({
       <body className={`${inter.variable} ${saira.variable} antialiased`}>
         <ThemeProviderNext>
           <GlobalStyle />
+          <Header />
           {children}
         </ThemeProviderNext>
       </body>
