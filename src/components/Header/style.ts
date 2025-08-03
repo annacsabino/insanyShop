@@ -17,7 +17,7 @@ export const NavContent = styled.nav`
 export const HeaderLogo = styled.h1`
   font-size: 2.5rem;
   font-weight: 700;
-  line-height: 150%;
+  line-height: 100%;
   color: ${({ theme }) => theme.colors.bgDark};
 `
 export const HeaderActions = styled.div`
