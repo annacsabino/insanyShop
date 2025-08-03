@@ -5,11 +5,12 @@ import { SubHeader } from '@/components/SubHeader'
 //Todo: Ajustar titulo do card para h3
 //Todo: Ajustar grid template do card para colocar repeat(3, 1fr)
 //Todo: Ajsutar grid das categorias para o mobile
+
 export default function Home() {
   return (
     <main>
       <SubHeader />
-      <ProductSection />
+      <ProductSection title="Todos os produtos" />
       <CategoriesSection />
     </main>
   )
