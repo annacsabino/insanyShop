@@ -5,6 +5,15 @@ import styled from 'styled-components'
 export const ProductSectionWrapper = styled.section`
   padding-bottom: 6.19rem;
 `
+export const TitleSectionWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`
+
+export const DescriptionSection = styled.p`
+  font-size: 1.25rem;
+`
 
 export const ProductsWrapper = styled.div`
   display: grid;

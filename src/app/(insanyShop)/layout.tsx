@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { Inter, Saira } from 'next/font/google'
 
-import { GlobalStyle } from '../styles/global'
+import { GlobalStyle } from '../../styles/global'
 import { ThemeProviderNext } from '@/providers/NextThemeProvider'
 import { Header } from '@/components/Header'
 

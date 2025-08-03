@@ -1,13 +1,26 @@
 import { Container, TitleSection } from '@/styles/patterns'
 import { ProductCard } from '../ProductCard'
-import { ProductSectionWrapper, ProductsWrapper } from './style'
+import {
+  ProductSectionWrapper,
+  ProductsWrapper,
+  TitleSectionWrapper,
+  DescriptionSection
+} from './style'
 import { Pagination } from '../Pagination'
 
-export function ProductSection() {
+interface ProductSectionProps {
+  title: string
+  description?: string
+}
+
+export function ProductSection({ title, description }: ProductSectionProps) {
   return (
     <ProductSectionWrapper>
       <Container>
-        <TitleSection>Todos os produtos</TitleSection>
+        <TitleSectionWrapper>
+          <TitleSection>{title}</TitleSection>
+          <DescriptionSection>{description}</DescriptionSection>
+        </TitleSectionWrapper>
         <ProductsWrapper>
           <ProductCard />
           <ProductCard />

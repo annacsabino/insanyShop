@@ -49,7 +49,7 @@ export function ProductCard() {
         </PriceCardWrapper>
         <Button>
           <Image
-            src="./assets/icons/cart.svg"
+            src="/assets/icons/cart.svg"
             alt="Icone de carrinho de compra"
             width={24}
             height={24}
