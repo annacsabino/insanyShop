@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 const inter = Inter({
   variable: '--font-inter',
   subsets: ['latin'],
-  weight: ['400', '500', '600']
+  weight: ['300', '400', '500', '600']
 })
 
 const saira = Saira({
