@@ -6,6 +6,7 @@ import {
   PriceProductCard,
   ProductCardContainer,
   ProductContentCard,
+  ProductImageCard,
   StarRatingContainer,
   TagProductWrapper,
   TitleProductCard
@@ -13,20 +14,36 @@ import {
 
 import { Button } from '../Button'
 
-export function ProductCard() {
+interface ProductProps {
+  id: number
+  name: string
+  description: string
+  price: number
+  image: string
+  category: string
+  stock: number
+  rating: number
+  brand: string
+}
+
+interface ProductCardProps {
+  product: ProductProps
+}
+
+export function ProductCard({ product }: ProductCardProps) {
   return (
     <ProductCardContainer>
-      <div>
+      <ProductImageCard>
         <Image
-          src="/assets/images/placeholder-image.png"
+          src={product.image}
           alt="Foto do produto"
           width={356}
           height={270}
         />
-      </div>
+      </ProductImageCard>
       <ProductContentCard>
         <TagProductWrapper>
-          <p>Roupas e Calçados</p>
+          <p>{product.category}</p>
           <StarRatingContainer>
             <Image
               src="/assets/icons/star.svg"
@@ -34,18 +51,16 @@ export function ProductCard() {
               width={14}
               height={14}
             />
-            <p>4.9</p>
+            <p>{product.rating}</p>
           </StarRatingContainer>
         </TagProductWrapper>
         <div>
-          <TitleProductCard>Camiseta Básica Premium</TitleProductCard>
-          <DescritionProductCard>
-            Camisa 100% algodão com corte moderno e acabamento premium...
-          </DescritionProductCard>
+          <TitleProductCard>{product.name}</TitleProductCard>
+          <DescritionProductCard>{product.description}</DescritionProductCard>
         </div>
         <PriceCardWrapper>
-          <PriceProductCard>R$ 59,90</PriceProductCard>
-          <p>50 em estoque</p>
+          <PriceProductCard>R$ {product.price}</PriceProductCard>
+          <p>{product.stock} em estoque</p>
         </PriceCardWrapper>
         <Button>
           <Image

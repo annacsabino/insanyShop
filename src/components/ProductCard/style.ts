@@ -19,6 +19,13 @@ export const ProductContentCard = styled.div`
   gap: 0.94rem;
   padding: 0.75rem 1.31rem 1.75rem;
 `
+export const ProductImageCard = styled.div`
+  width: 100%;
+  img {
+    object-fit: cover;
+    width: 100%;
+  }
+`
 
 export const TagProductWrapper = styled.div`
   display: flex;
@@ -43,6 +50,11 @@ export const DescritionProductCard = styled.p`
   font-weight: 400;
   line-height: 150%;
   margin-top: 0.31rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  overflow: hidden;
 `
 
 export const PriceCardWrapper = styled.div`

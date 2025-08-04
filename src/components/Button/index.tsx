@@ -6,5 +6,5 @@ interface ButtonProps {
 }
 
 export function Button({ children, variant = 'primary' }: ButtonProps) {
-  return <ButtonContainer variant={variant}>{children}</ButtonContainer>
+  return <ButtonContainer $variant={variant}>{children}</ButtonContainer>
 }
