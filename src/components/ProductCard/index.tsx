@@ -12,6 +12,7 @@ import {
   TitleProductCard
 } from './style'
 
+import { useEffect, useState } from 'react'
 import { Button } from '../Button'
 
 interface ProductProps {
@@ -31,6 +32,22 @@ interface ProductCardProps {
 }
 
 export function ProductCard({ product }: ProductCardProps) {
+  const [productToCart, setProductToCart] = useState<ProductProps[]>([])
+
+  function addToCart(product: ProductProps) {
+    const storedCart = localStorage.getItem('cart-product')
+    const value = storedCart !== null ? JSON.parse(storedCart) : []
+    setProductToCart([...value, product])
+  }
+
+  useEffect(() => {
+    if (productToCart.length > 0) {
+      const data = JSON.stringify(productToCart)
+
+      localStorage.setItem('cart-product', data)
+    }
+  }, [productToCart])
+
   return (
     <ProductCardContainer>
       <ProductImageCard>
@@ -62,7 +79,7 @@ export function ProductCard({ product }: ProductCardProps) {
           <PriceProductCard>R$ {product.price}</PriceProductCard>
           <p>{product.stock} em estoque</p>
         </PriceCardWrapper>
-        <Button>
+        <Button onClick={() => addToCart(product)}>
           <Image
             src="/assets/icons/cart.svg"
             alt="Icone de carrinho de compra"

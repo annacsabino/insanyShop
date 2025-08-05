@@ -1,38 +1,67 @@
+'use client'
+
 import Image from 'next/image'
 
 import { BackButton } from '@/components/BackButton'
-import { Container } from '@/styles/patterns'
 import { Button } from '@/components/Button'
+import { Container } from '@/styles/patterns'
 
+import { useEffect, useState } from 'react'
 import {
-  CartPageContainer,
-  CartPageSection,
-  CartListContent,
-  CartTotalAmount,
   CartHeader,
+  CartImageItem,
   CartItemCard,
-  CartItemHeader,
-  CartItemTitle,
-  RemoveItemButton,
   CartItemDescription,
   CartItemFooter,
-  QuantitySelector,
-  CartItemPrice,
+  CartItemHeader,
   CartItemInfo,
   CartItemList,
+  CartItemPrice,
+  CartItemTitle,
+  CartListContent,
+  CartPageContainer,
+  CartPageSection,
   CartSidebar,
+  CartTotalAmount,
+  HelpLinksItem,
+  HelpLinksList,
   OrderSummaryCard,
+  OrderSummaryCardWrapper,
+  OrderSummaryDivider,
   OrderSummaryLine,
   OrderSummaryText,
-  OrderSummaryDivider,
   OrderSummaryTotalText,
-  HelpLinksList,
-  HelpLinksItem,
-  CartImageItem,
-  OrderSummaryCardWrapper
+  QuantitySelector,
+  RemoveItemButton
 } from './style'
 
+interface ProductProps {
+  id: number
+  name: string
+  description: string
+  price: number
+  image: string
+  category: string
+  stock: number
+  rating: number
+  brand: string
+}
+
 export default function CartPage() {
+  const [products, setProducts] = useState<ProductProps[]>(() => {
+    const storedCart = localStorage.getItem('cart-product')
+    return storedCart ? JSON.parse(storedCart) : []
+  })
+
+  const removeFromCart = (id: number) => {
+    setProducts((prevProducts) => prevProducts.filter((item) => item.id !== id))
+  }
+
+  useEffect(() => {
+    const data = JSON.stringify(products)
+    localStorage.setItem('cart-product', data)
+  }, [products])
+
   return (
     <CartPageSection>
       <Container>
@@ -48,49 +77,50 @@ export default function CartPage() {
                 </p>
               </CartHeader>
               <CartItemList>
-                <CartItemCard>
-                  <CartImageItem>
-                    <Image
-                      src="/assets/images/placeholder-image.png"
-                      alt="Foto do produto"
-                      width={356}
-                      height={270}
-                    />
-                  </CartImageItem>
-                  <CartItemInfo>
-                    <CartItemHeader>
-                      <CartItemTitle>Camiseta Básica Premium</CartItemTitle>
-                      <RemoveItemButton>
-                        <Image
-                          src="/assets/icons/trash.svg"
-                          alt="Lixeira"
-                          width={24}
-                          height={24}
-                        />
-                      </RemoveItemButton>
-                    </CartItemHeader>
-                    <div>
-                      <CartItemDescription>
-                        Aqui vem um texto descritivo do produto, esta caixa de
-                        texto servirá apenas de exemplo para que simule algum
-                        texto que venha a ser inserido nesse campo, descrevendo
-                        tal produto.
-                      </CartItemDescription>
-                    </div>
-                    <CartItemFooter>
-                      <QuantitySelector>
-                        <p>1</p>
-                        <Image
-                          src="/assets/icons/arrow-down.svg"
-                          alt="Icone de uma setinha virada para baixo"
-                          width={24}
-                          height={24}
-                        />
-                      </QuantitySelector>
-                      <CartItemPrice>R$ 40,00</CartItemPrice>
-                    </CartItemFooter>
-                  </CartItemInfo>
-                </CartItemCard>
+                {products.map((item) => (
+                  <CartItemCard key={item.id}>
+                    <CartImageItem>
+                      <Image
+                        src={item.image}
+                        alt={item.name}
+                        width={356}
+                        height={270}
+                      />
+                    </CartImageItem>
+                    <CartItemInfo>
+                      <CartItemHeader>
+                        <CartItemTitle>{item.name}</CartItemTitle>
+                        <RemoveItemButton
+                          onClick={() => removeFromCart(item.id)}
+                        >
+                          <Image
+                            src="/assets/icons/trash.svg"
+                            alt="Lixeira"
+                            width={24}
+                            height={24}
+                          />
+                        </RemoveItemButton>
+                      </CartItemHeader>
+                      <div>
+                        <CartItemDescription>
+                          {item.description}
+                        </CartItemDescription>
+                      </div>
+                      <CartItemFooter>
+                        <QuantitySelector>
+                          <p>1</p>
+                          <Image
+                            src="/assets/icons/arrow-down.svg"
+                            alt="Icone de uma setinha virada para baixo"
+                            width={24}
+                            height={24}
+                          />
+                        </QuantitySelector>
+                        <CartItemPrice>R$ {item.price}</CartItemPrice>
+                      </CartItemFooter>
+                    </CartItemInfo>
+                  </CartItemCard>
+                ))}
               </CartItemList>
             </CartListContent>
           </div>
