@@ -1,3 +1,5 @@
+'use client'
+
 import Image from 'next/image'
 
 import {
@@ -12,8 +14,11 @@ import {
   TitleProductCard
 } from './style'
 
-import { useEffect, useState } from 'react'
 import { Button } from '../Button'
+import { useRouter } from 'next/navigation'
+
+import { formatPrice } from '@/utils/formatPrice'
+import { useCart } from '@/hooks/useCart'
 
 interface ProductProps {
   id: number
@@ -32,19 +37,19 @@ interface ProductCardProps {
 }
 
 export function ProductCard({ product }: ProductCardProps) {
-  const [productToCart, setProductToCart] = useState<ProductProps[]>([])
+  const router = useRouter()
+  const { addToCart } = useCart()
 
-  function addToCart(product: ProductProps) {
-    const storedCart = localStorage.getItem('cart-product')
-    const currentCart = storedCart ? JSON.parse(storedCart) : []
-    const updatedCart = [...currentCart, product]
+  const handleCardClick = () => {
+    router.push(`/produto/${product.id}`)
+  }
 
-    localStorage.setItem('cart-product', JSON.stringify(updatedCart))
-    window.dispatchEvent(new Event('cart-updated'))
+  const handleAddToCart = () => {
+    addToCart(product)
   }
 
   return (
-    <ProductCardContainer>
+    <ProductCardContainer onClick={handleCardClick}>
       <ProductImageCard>
         <Image
           src={product.image}
@@ -71,10 +76,15 @@ export function ProductCard({ product }: ProductCardProps) {
           <DescritionProductCard>{product.description}</DescritionProductCard>
         </div>
         <PriceCardWrapper>
-          <PriceProductCard>R$ {product.price}</PriceProductCard>
+          <PriceProductCard>{formatPrice(product.price)}</PriceProductCard>
           <p>{product.stock} em estoque</p>
         </PriceCardWrapper>
-        <Button onClick={() => addToCart(product)}>
+        <Button
+          onClick={(e) => {
+            e.stopPropagation()
+            handleAddToCart()
+          }}
+        >
           <Image
             src="/assets/icons/cart.svg"
             alt="Icone de carrinho de compra"

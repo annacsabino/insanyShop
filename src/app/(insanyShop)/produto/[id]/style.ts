@@ -41,6 +41,7 @@ export const ProductInfoHeader = styled.header`
 export const CategoryLabel = styled.p`
   margin-bottom: 0.75rem;
   color: ${({ theme }) => theme.colors.textDarkInputs};
+  text-transform: capitalize;
 `
 
 export const ProductTitle = styled.h1`

@@ -11,6 +11,7 @@ export const ProductCardContainer = styled.div`
   overflow: hidden;
   background-color: ${({ theme }) => theme.colors.white};
   box-shadow: -6px 8px 20.4px 0 rgba(0, 0, 0, 0.04);
+  cursor: pointer;
 `
 
 export const ProductContentCard = styled.div`

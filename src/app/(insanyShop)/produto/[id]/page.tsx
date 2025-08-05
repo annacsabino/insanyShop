@@ -1,4 +1,6 @@
-import { Button } from '@/components/Button'
+'use client'
+
+import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import {
   ProductPageContent,
@@ -14,8 +16,47 @@ import {
 } from './style'
 import { Container } from '@/styles/themes/patterns'
 import { BackButton } from '@/components/BackButton'
+import { Button } from '@/components/Button'
+import { api } from '@/api'
+import { useParams } from 'next/navigation'
+
+import { useCart } from '@/hooks/useCart'
+
+import { SingleProductType } from '@/types/products'
+import { formatPrice } from '@/utils/formatPrice'
 
 export default function ProductPage() {
+  const params = useParams()
+  const productId = params.id as string
+  const [product, setProduct] = useState<SingleProductType | null>(null)
+  const { addToCart, isInCart } = useCart()
+
+  useEffect(() => {
+    async function fetchProduct() {
+      const response = await api.get(`/products/${productId}`)
+      setProduct(response.data.product)
+    }
+    fetchProduct()
+  }, [productId])
+  const handleAddToCart = () => {
+    if (product) {
+      const success = addToCart(product)
+    }
+  }
+
+  if (!product) {
+    return (
+      <ProductItemSection>
+        <Container>
+          <ProductPageContainer>
+            <BackButton />
+            <div>Carregando produto...</div>
+          </ProductPageContainer>
+        </Container>
+      </ProductItemSection>
+    )
+  }
+
   return (
     <ProductItemSection>
       <Container>
@@ -24,33 +65,30 @@ export default function ProductPage() {
           <ProductPageContent>
             <ProductImageContainer>
               <Image
-                src="/assets/images/product.png"
-                alt="Foto do produto"
+                src={product.image || '/assets/images/placeholder.png'}
+                alt={product.name || 'Produto'}
                 width={600}
                 height={600}
               />
             </ProductImageContainer>
             <ProductInfoContainer>
               <ProductInfoHeader>
-                <CategoryLabel>Casa e Decoração</CategoryLabel>
-                <ProductTitle>Sofá 3 Lugares Retrátil</ProductTitle>
-                <ProductPrice>R$ 1.899,99</ProductPrice>
+                <CategoryLabel>{product.category}</CategoryLabel>
+                <ProductTitle>{product.name}</ProductTitle>
+                <ProductPrice>{formatPrice(product.price)}</ProductPrice>
               </ProductInfoHeader>
               <ProductDescriptionWrapper>
                 <h2>Descrição</h2>
-                <p>
-                  Sofá confortável com assento retrátil e reclinável,
-                  revestimento em tecido suede e estrutura de madeira maciça.
-                </p>
+                <p>{product?.description}</p>
               </ProductDescriptionWrapper>
-              <Button>
+              <Button onClick={handleAddToCart}>
                 <Image
                   src="/assets/icons/cart.svg"
                   alt="Icone de carrinho de compra"
                   width={24}
                   height={24}
                 />
-                Adicionar
+                {isInCart(product?.id || 0) ? 'Já no carrinho' : 'Adicionar'}
               </Button>
             </ProductInfoContainer>
           </ProductPageContent>

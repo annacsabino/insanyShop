@@ -8,6 +8,7 @@ import { Container } from '@/styles/themes/patterns'
 
 import { useEffect, useState } from 'react'
 import {
+  CardListWrapper,
   CartHeader,
   CartImageItem,
   CartItemCard,
@@ -23,6 +24,7 @@ import {
   CartPageSection,
   CartSidebar,
   CartTotalAmount,
+  CleanCart,
   HelpLinksItem,
   HelpLinksList,
   OrderSummaryCard,
@@ -34,6 +36,8 @@ import {
   QuantitySelector,
   RemoveItemButton
 } from './style'
+
+import { formatPrice } from '@/utils/formatPrice'
 
 interface ProductProps {
   id: number
@@ -79,18 +83,11 @@ export default function CartPage() {
   const subtotal = products.reduce((total, product) => total + product.price, 0)
   const totalAmount = subtotal + 40
 
-  const formatPrice = (price: number) => {
-    return price.toLocaleString('pt-BR', {
-      style: 'currency',
-      currency: 'BRL'
-    })
-  }
-
   return (
     <CartPageSection>
       <Container>
         <CartPageContainer>
-          <div>
+          <CardListWrapper>
             <BackButton />
 
             <CartListContent>
@@ -102,53 +99,59 @@ export default function CartPage() {
                 </p>
               </CartHeader>
               <CartItemList>
-                {products.map((item) => (
-                  <CartItemCard key={item.id}>
-                    <CartImageItem>
-                      <Image
-                        src={item.image}
-                        alt={item.name}
-                        width={356}
-                        height={270}
-                      />
-                    </CartImageItem>
-                    <CartItemInfo>
-                      <CartItemHeader>
-                        <CartItemTitle>{item.name}</CartItemTitle>
-                        <RemoveItemButton
-                          onClick={() => removeFromCart(item.id)}
-                        >
-                          <Image
-                            src="/assets/icons/trash.svg"
-                            alt="Lixeira"
-                            width={24}
-                            height={24}
-                          />
-                        </RemoveItemButton>
-                      </CartItemHeader>
-                      <div>
-                        <CartItemDescription>
-                          {item.description}
-                        </CartItemDescription>
-                      </div>
-                      <CartItemFooter>
-                        <QuantitySelector>
-                          <p>1</p>
-                          <Image
-                            src="/assets/icons/arrow-down.svg"
-                            alt="Icone de uma setinha virada para baixo"
-                            width={24}
-                            height={24}
-                          />
-                        </QuantitySelector>
-                        <CartItemPrice>{formatPrice(item.price)}</CartItemPrice>
-                      </CartItemFooter>
-                    </CartItemInfo>
-                  </CartItemCard>
-                ))}
+                {products.length > 0 ? (
+                  products.map((item) => (
+                    <CartItemCard key={item.id}>
+                      <CartImageItem>
+                        <Image
+                          src={item.image}
+                          alt={item.name}
+                          width={356}
+                          height={270}
+                        />
+                      </CartImageItem>
+                      <CartItemInfo>
+                        <CartItemHeader>
+                          <CartItemTitle>{item.name}</CartItemTitle>
+                          <RemoveItemButton
+                            onClick={() => removeFromCart(item.id)}
+                          >
+                            <Image
+                              src="/assets/icons/trash.svg"
+                              alt="Lixeira"
+                              width={24}
+                              height={24}
+                            />
+                          </RemoveItemButton>
+                        </CartItemHeader>
+                        <div>
+                          <CartItemDescription>
+                            {item.description}
+                          </CartItemDescription>
+                        </div>
+                        <CartItemFooter>
+                          <QuantitySelector>
+                            <p>1</p>
+                            <Image
+                              src="/assets/icons/arrow-down.svg"
+                              alt="Icone de uma setinha virada para baixo"
+                              width={24}
+                              height={24}
+                            />
+                          </QuantitySelector>
+                          <CartItemPrice>
+                            {formatPrice(item.price)}
+                          </CartItemPrice>
+                        </CartItemFooter>
+                      </CartItemInfo>
+                    </CartItemCard>
+                  ))
+                ) : (
+                  <CleanCart>Seu carrinho está vazio</CleanCart>
+                )}
               </CartItemList>
             </CartListContent>
-          </div>
+          </CardListWrapper>
           <CartSidebar>
             <OrderSummaryCard>
               <h2>Resumo do pedido</h2>

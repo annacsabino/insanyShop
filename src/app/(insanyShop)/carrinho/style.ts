@@ -15,6 +15,10 @@ export const CartPageContainer = styled.main`
   }
 `
 
+export const CardListWrapper = styled.div`
+  width: 100%;
+`
+
 export const CartListContent = styled.div`
   margin-top: 1.94rem;
 `
@@ -42,6 +46,11 @@ export const CartItemList = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
+`
+
+export const CleanCart = styled.div`
+  width: 100%;
+  text-align: center;
 `
 
 // Card product
