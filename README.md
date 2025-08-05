@@ -1,27 +1,49 @@
-#InsanyShop 🎬
+# InsanyShop 🎬
+
 E aí, tudo certo? 👋
-Tenho certeza que você vai curtir dar uma olhada no InsanyShop! Pra conferir, é só clicar nesse link aqui: [URL do deploy]
-##Quer ir além? Roda na sua máquina! 🚀
-É super fácil e rapidinho, principalmente se você usa o _pnpm_. Pois foi essa ferramenta que eu usei 😉
-Pra fazer isso, é só seguir esses passos:
-Clone o repositório:
-bash git clone [URL_DO_SEU_REPOSITORIO]
-Entre na pasta do projeto:
-bash cd [nome-do-projeto] # (Ou caso você tenha usado um nome diferente, lembre-se de colocar ele aqui)
-Instale as dependências com [gerenciador]:
-bash[comando install]
-API TOKEN: Você vai precisar gerar uma chave de api lá no site: [URL_DA_API]
-Após isso é só renomear o arquivo (.env.example) para (.env) e colocar sua chave de api conforme indicado:
-envNEXT_PUBLIC_API_TOKEN='COLE SUA API KEY AQUI'
-Inicie o projeto:
-bash[comando dev]
-Tecnologias utilizadas 🛠️
 
-[Tecnologia 1]
+Tenho certeza que você vai curtir dar uma olhada no InsanyShop! Pra conferir, é só clicar nesse link aqui: https://insany-shop.vercel.app/
 
-Funcionalidades ✨
+---
 
-✅ [Funcionalidade 1]
-✅ [Funcionalidade 2]
-✅ [Funcionalidade 3]
-🚧 [Funcionalidade em desenvolvimento]
+## Quer ir além? Rode na sua máquina! 🚀
+
+É super fácil e rapidinho, principalmente se você usa o **pnpm**.
+
+Pra fazer isso, é só seguir estes passos:
+
+1.  **Clone o repositório:**
+
+    ```bash
+    git clone https://github.com/annacsabino/insanyShop.git
+    ```
+
+2.  **Entre na pasta do projeto:**
+
+    ```bash
+    cd insanyShop
+    ```
+
+    (Se você usou um nome diferente, lembre-se de substituí-lo aqui)
+
+3.  **Instale as dependências com o gerenciador de pacotes da sua preferência:**
+
+    ```bash
+    pnpm install
+    ```
+
+4.  **Inicie o projeto:**
+
+    ```bash
+    pnpm dev
+    ```
+
+---
+
+## Tecnologias utilizadas 🛠️
+
+- Para criar o projeto utilizei NEXT.JS, AXIOS, Styled Components
+
+---
+
+Foi muito legal fazer esse desafio, espero que gostem :)
