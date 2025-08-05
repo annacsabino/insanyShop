@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import Image from 'next/image'
 import { BackButtonContainer } from './style'
 
@@ -10,7 +11,7 @@ export function BackButton() {
         width={24}
         height={24}
       />
-      <a href="/">Voltar</a>
+      <Link href="/">Voltar</Link>
     </BackButtonContainer>
   )
 }
