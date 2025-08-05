@@ -68,4 +68,26 @@ export const CartIcon = styled.div`
   width: 1.5rem;
   height: 1.5rem;
   background: url('/assets/icons/shopping-cart.svg') no-repeat center center;
+  background-size: cover;
+`
+
+export const CartIconWrapper = styled.div`
+  position: relative;
+`
+
+export const CartBadge = styled.div`
+  position: absolute;
+  font-family: 'Saira';
+  bottom: -0.2rem;
+  right: -0.6rem;
+  width: 1.15rem;
+  height: 1.15rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: ${({ theme }) => theme.colors.danger};
+  color: white;
+  font-size: 0.625rem;
+  line-height: 1.25rem;
 `

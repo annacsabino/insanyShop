@@ -11,13 +11,17 @@ import {
   InputSearch,
   SearchIcon,
   CartIcon,
-  HeaderActions
+  HeaderActions,
+  CartBadge,
+  CartIconWrapper
 } from './style'
 
 import { useSearchContext } from '@/contexts/SearchContext'
+import { useCartCount } from '@/hooks/useCartCount'
 
 export function Header() {
   const { searchQuery, handleSearchInput } = useSearchContext()
+  const { cartCount } = useCartCount()
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     handleSearchInput(e.target.value)
@@ -40,7 +44,14 @@ export function Header() {
               />
               <SearchIcon />
             </SearchContainer>
-            <CartIcon onClick={() => router.push('/carrinho')} />
+            {cartCount == 0 ? (
+              <CartIcon onClick={() => router.push('/carrinho')} />
+            ) : (
+              <CartIconWrapper>
+                <CartIcon onClick={() => router.push('/carrinho')} />
+                <CartBadge>{cartCount}</CartBadge>
+              </CartIconWrapper>
+            )}
           </HeaderActions>
         </NavContent>
       </Container>

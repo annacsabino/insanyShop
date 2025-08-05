@@ -49,20 +49,42 @@ interface ProductProps {
 
 export default function CartPage() {
   const [products, setProducts] = useState<ProductProps[]>([])
+  const [isInitialized, setIsInitialized] = useState(false)
   useEffect(() => {
     const storedCart = localStorage.getItem('cart-product')
     if (storedCart) {
       setProducts(JSON.parse(storedCart))
     }
+    setIsInitialized(true)
   }, [])
 
   const removeFromCart = (id: number) => {
-    setProducts((prevProducts) => prevProducts.filter((item) => item.id !== id))
+    setProducts((prevProducts) => {
+      const filtered = prevProducts.filter((item) => item.id !== id)
+      setTimeout(() => {
+        window.dispatchEvent(new Event('cart-updated'))
+      }, 100)
+
+      return filtered
+    })
   }
 
   useEffect(() => {
-    localStorage.setItem('cart-product', JSON.stringify(products))
-  }, [products])
+    if (isInitialized) {
+      localStorage.setItem('cart-product', JSON.stringify(products))
+    }
+  }, [products, isInitialized])
+
+  const quantityPoductCart = products.length
+  const subtotal = products.reduce((total, product) => total + product.price, 0)
+  const totalAmount = subtotal + 40
+
+  const formatPrice = (price: number) => {
+    return price.toLocaleString('pt-BR', {
+      style: 'currency',
+      currency: 'BRL'
+    })
+  }
 
   return (
     <CartPageSection>
@@ -75,7 +97,8 @@ export default function CartPage() {
               <CartHeader>
                 <h1>Seu carrinho</h1>
                 <p>
-                  Total (3 produtos) <CartTotalAmount>R$161,00</CartTotalAmount>
+                  Total ({quantityPoductCart} produtos){' '}
+                  <CartTotalAmount>{formatPrice(totalAmount)}</CartTotalAmount>
                 </p>
               </CartHeader>
               <CartItemList>
@@ -118,7 +141,7 @@ export default function CartPage() {
                             height={24}
                           />
                         </QuantitySelector>
-                        <CartItemPrice>R$ {item.price}</CartItemPrice>
+                        <CartItemPrice>{formatPrice(item.price)}</CartItemPrice>
                       </CartItemFooter>
                     </CartItemInfo>
                   </CartItemCard>
@@ -132,16 +155,18 @@ export default function CartPage() {
               <OrderSummaryCardWrapper>
                 <OrderSummaryLine>
                   <OrderSummaryText>Subtotal</OrderSummaryText>
-                  <OrderSummaryText>R$ 161,00</OrderSummaryText>
+                  <OrderSummaryText>{formatPrice(subtotal)}</OrderSummaryText>
                 </OrderSummaryLine>
                 <OrderSummaryLine>
-                  <OrderSummaryText>Subtotal</OrderSummaryText>
-                  <OrderSummaryText>R$ 161,00</OrderSummaryText>
+                  <OrderSummaryText>Entrega</OrderSummaryText>
+                  <OrderSummaryText>R$ 40,00</OrderSummaryText>
                 </OrderSummaryLine>
                 <OrderSummaryDivider />
                 <OrderSummaryLine>
                   <OrderSummaryTotalText>Total</OrderSummaryTotalText>
-                  <OrderSummaryTotalText>R$ 161,00</OrderSummaryTotalText>
+                  <OrderSummaryTotalText>
+                    {formatPrice(totalAmount)}
+                  </OrderSummaryTotalText>
                 </OrderSummaryLine>
               </OrderSummaryCardWrapper>
               <Button variant="secondary">Finalizar compra</Button>

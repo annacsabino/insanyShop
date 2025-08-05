@@ -36,17 +36,12 @@ export function ProductCard({ product }: ProductCardProps) {
 
   function addToCart(product: ProductProps) {
     const storedCart = localStorage.getItem('cart-product')
-    const value = storedCart !== null ? JSON.parse(storedCart) : []
-    setProductToCart([...value, product])
+    const currentCart = storedCart ? JSON.parse(storedCart) : []
+    const updatedCart = [...currentCart, product]
+
+    localStorage.setItem('cart-product', JSON.stringify(updatedCart))
+    window.dispatchEvent(new Event('cart-updated'))
   }
-
-  useEffect(() => {
-    if (productToCart.length > 0) {
-      const data = JSON.stringify(productToCart)
-
-      localStorage.setItem('cart-product', data)
-    }
-  }, [productToCart])
 
   return (
     <ProductCardContainer>
