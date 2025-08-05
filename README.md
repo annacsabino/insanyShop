@@ -18,9 +18,6 @@ bash[comando dev]
 Tecnologias utilizadas 🛠️
 
 [Tecnologia 1]
-[Tecnologia 2]
-[Tecnologia 3]
-[etc...]
 
 Funcionalidades ✨
 
