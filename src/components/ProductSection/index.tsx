@@ -1,6 +1,6 @@
 'use client'
 
-import { Container, TitleSection } from '@/styles/patterns'
+import { Container, TitleSection } from '@/styles/themes/patterns'
 import { ProductCard } from '../ProductCard'
 import {
   ProductSectionWrapper,
@@ -10,7 +10,7 @@ import {
 } from './style'
 import { Pagination } from '../Pagination'
 import { api } from '@/api'
-import { ProductType } from '@/@types/products'
+import { ProductType } from '@/types/products'
 import { useEffect, useState } from 'react'
 
 interface ProductSectionProps {

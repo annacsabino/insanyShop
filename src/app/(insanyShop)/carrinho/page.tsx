@@ -4,7 +4,7 @@ import Image from 'next/image'
 
 import { BackButton } from '@/components/BackButton'
 import { Button } from '@/components/Button'
-import { Container } from '@/styles/patterns'
+import { Container } from '@/styles/themes/patterns'
 
 import { useEffect, useState } from 'react'
 import {

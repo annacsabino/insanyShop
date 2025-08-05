@@ -2,7 +2,7 @@
 
 import { useRouter } from 'next/navigation'
 
-import { Container } from '@/styles/patterns'
+import { Container } from '@/styles/themes/patterns'
 import {
   HeaderContainer,
   HeaderLogo,
