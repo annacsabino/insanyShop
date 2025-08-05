@@ -1,4 +1,7 @@
+'use client'
+
 import Image from 'next/image'
+import Link from 'next/link'
 
 import { ProductSection } from '@/components/ProductSection'
 import {
@@ -11,16 +14,24 @@ import {
 } from '@/components/SubHeader/style'
 import { Container } from '@/styles/themes/patterns'
 import { BreadcrumbWrapper } from './style'
+
+import { useCategory, useFilters } from '@/hooks/useCategories'
+
 export default function CategoryPage() {
+  const { category, categoryId } = useCategory()
+  const { sortBy, setSortBy } = useFilters()
+
+  if (!category) return null
+
   return (
     <main>
       <SubHeaderSection>
         <Container>
           <SubHeaderWrapper>
             <BreadcrumbWrapper>
-              <a href="">Produtos</a>
+              <Link href="/">Produtos</Link>
               <span>/</span>
-              <p>Eletrônicos</p>
+              <p>{category.name}</p>
             </BreadcrumbWrapper>
 
             <SelectInputContainer>
@@ -36,16 +47,24 @@ export default function CategoryPage() {
               <SelectDropdown>
                 <SelectDropdownItems>
                   <li>
-                    <a href="">Novidades</a>
+                    <button onClick={() => setSortBy('newest')}>
+                      Novidades
+                    </button>
                   </li>
                   <li>
-                    <a href="">Preço: Maior - menor</a>
+                    <button onClick={() => setSortBy('price_desc')}>
+                      Preço: Maior - menor
+                    </button>
                   </li>
                   <li>
-                    <a href="">Preço: Menor - maior</a>
+                    <button onClick={() => setSortBy('price_asc')}>
+                      Preço: Menor - maior
+                    </button>
                   </li>
                   <li>
-                    <a href="">Mais vendidos</a>
+                    <button onClick={() => setSortBy('bestseller')}>
+                      Mais vendidos
+                    </button>
                   </li>
                 </SelectDropdownItems>
               </SelectDropdown>
@@ -54,8 +73,10 @@ export default function CategoryPage() {
         </Container>
       </SubHeaderSection>
       <ProductSection
-        title="Eletrônicos"
-        description="Smartphones, laptops, consoles e mais"
+        title={category.name}
+        description={category.description}
+        categoryId={categoryId}
+        sortBy={sortBy}
       />
     </main>
   )

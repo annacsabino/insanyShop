@@ -16,19 +16,33 @@ import { useEffect, useState } from 'react'
 interface ProductSectionProps {
   title: string
   description?: string
+  categoryId?: string
+  sortBy?: string
 }
 
-export function ProductSection({ title, description }: ProductSectionProps) {
+export function ProductSection({
+  title,
+  description,
+  categoryId,
+  sortBy
+}: ProductSectionProps) {
   const [products, setProducts] = useState<ProductType>()
   const [currentPage, setCurrentPage] = useState(1)
 
   useEffect(() => {
     async function fetchData() {
-      const response = await api.get(`/products?page=${currentPage}&limit=6`)
+      let url = `/products?page=${currentPage}&limit=6`
+      if (sortBy) {
+        url += `&sort=${sortBy}`
+      }
+      if (categoryId) {
+        url += `&category=${categoryId}`
+      }
+      const response = await api.get(url)
       setProducts(response.data)
     }
     fetchData()
-  }, [currentPage])
+  }, [currentPage, categoryId, sortBy])
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page)

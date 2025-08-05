@@ -13,8 +13,8 @@ export const CategoryCardWrapper = styled.div`
   gap: 1.25rem;
 `
 
-export const CategoryCardItemWrapper = styled.div`
-  padding: 2rem 1.5rem;
+export const CategoryCardItemWrapper = styled.a`
+  padding: 2rem 1rem;
   display: flex;
   flex-direction: column;
   gap: 1rem;
