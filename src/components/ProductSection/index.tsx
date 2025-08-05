@@ -20,13 +20,20 @@ interface ProductSectionProps {
 
 export function ProductSection({ title, description }: ProductSectionProps) {
   const [products, setProducts] = useState<ProductType>()
+  const [currentPage, setCurrentPage] = useState(1)
+
   useEffect(() => {
     async function fetchData() {
-      const response = await api.get('/products')
+      const response = await api.get(`/products?page=${currentPage}&limit=6`)
       setProducts(response.data)
     }
     fetchData()
-  }, [])
+  }, [currentPage])
+
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page)
+    // window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
 
   return (
     <ProductSectionWrapper>
@@ -40,7 +47,15 @@ export function ProductSection({ title, description }: ProductSectionProps) {
             <ProductCard key={product.id} product={product} />
           ))}
         </ProductsWrapper>
-        <Pagination />
+        {products?.pagination && products.pagination.totalPages > 1 && (
+          <Pagination
+            currentPage={products.pagination.currentPage}
+            totalPages={products.pagination.totalPages}
+            hasNextPage={products.pagination.hasNextPage}
+            hasPreviousPage={products.pagination.hasPreviousPage}
+            onPageChange={handlePageChange}
+          />
+        )}
       </Container>
     </ProductSectionWrapper>
   )

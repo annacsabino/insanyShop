@@ -13,13 +13,13 @@ export const PaginationContainer = styled.div`
   margin-top: 3.19rem;
 `
 
-export const PaginationList = styled.ul`
+export const PaginationList = styled.div`
   display: flex;
   gap: 1.31rem;
   list-style: none;
 `
 
-export const PagintionButton = styled.li<PaginationButtonProps>`
+export const PagintionButton = styled.button<PaginationButtonProps>`
   width: 2rem;
   height: 2rem;
   display: flex;

@@ -10,4 +10,11 @@ export type ProductType = {
     rating: number
     brand: string
   }[]
+  pagination: {
+    currentPage: number
+    totalPages: number
+    totalProducts: number
+    hasNextPage: boolean
+    hasPreviousPage: boolean
+  }
 }
