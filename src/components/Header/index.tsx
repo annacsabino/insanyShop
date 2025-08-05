@@ -14,19 +14,29 @@ import {
   HeaderActions
 } from './style'
 
+import { useSearchContext } from '@/contexts/SearchContext'
+
 export function Header() {
+  const { searchQuery, handleSearchInput } = useSearchContext()
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    handleSearchInput(e.target.value)
+  }
+
   const router = useRouter()
   return (
     <HeaderContainer>
       <Container>
         <NavContent>
-          <HeaderLogo>InsanyShop</HeaderLogo>
+          <HeaderLogo href="/">InsanyShop</HeaderLogo>
           <HeaderActions>
             <SearchContainer>
               <InputSearch
                 type="search"
                 placeholder="Procurando por algo específico?"
                 aria-label="Campo de busca de produtos"
+                value={searchQuery}
+                onChange={handleInputChange}
               />
               <SearchIcon />
             </SearchContainer>

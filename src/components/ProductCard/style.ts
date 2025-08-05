@@ -32,6 +32,9 @@ export const TagProductWrapper = styled.div`
   justify-content: space-between;
   gap: 0.25rem;
   font-size: 0.875rem;
+  p {
+    text-transform: capitalize;
+  }
 `
 
 export const StarRatingContainer = styled.div`
@@ -41,7 +44,7 @@ export const StarRatingContainer = styled.div`
   gap: 0.25rem;
 `
 
-export const TitleProductCard = styled.h2`
+export const TitleProductCard = styled.h3`
   font-size: 0.875rem;
   font-weight: 700;
 `

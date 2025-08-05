@@ -9,6 +9,10 @@ export const CartPageSection = styled.section`
 export const CartPageContainer = styled.main`
   display: flex;
   gap: 2rem;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
 `
 
 export const CartListContent = styled.div`
@@ -129,6 +133,11 @@ export const CartSidebar = styled.aside`
   flex-direction: column;
   justify-content: space-between;
   background-color: ${({ theme }) => theme.colors.white};
+
+  @media (max-width: 768px) {
+    height: auto;
+    gap: 2rem;
+  }
 `
 export const OrderSummaryCardWrapper = styled.div`
   margin-bottom: 2.5rem;

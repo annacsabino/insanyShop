@@ -12,13 +12,18 @@ export const NavContent = styled.nav`
   align-items: center;
   justify-content: space-between;
   gap: 1.5rem;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
 `
 
-export const HeaderLogo = styled.h1`
+export const HeaderLogo = styled.a`
   font-size: 2.5rem;
   font-weight: 700;
   line-height: 100%;
   color: ${({ theme }) => theme.colors.bgDark};
+  cursor: pointer;
 `
 export const HeaderActions = styled.div`
   display: flex;

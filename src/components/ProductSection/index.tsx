@@ -18,31 +18,40 @@ interface ProductSectionProps {
   description?: string
   categoryId?: string
   sortBy?: string
+  searchQuery?: string
 }
 
 export function ProductSection({
   title,
   description,
   categoryId,
-  sortBy
+  sortBy,
+  searchQuery
 }: ProductSectionProps) {
   const [products, setProducts] = useState<ProductType>()
   const [currentPage, setCurrentPage] = useState(1)
 
   useEffect(() => {
-    async function fetchData() {
-      let url = `/products?page=${currentPage}&limit=6`
-      if (sortBy) {
-        url += `&sort=${sortBy}`
+    async function fetchProducts() {
+      if (searchQuery) {
+        const response = await api.get(
+          `/products?search=${searchQuery}&page=${currentPage}&limit=6` // ← Mudou aqui
+        )
+        setProducts(response.data)
+      } else {
+        let url = `/products?page=${currentPage}&limit=6`
+        if (sortBy) {
+          url += `&sort=${sortBy}`
+        }
+        if (categoryId) {
+          url += `&category=${categoryId}`
+        }
+        const response = await api.get(url)
+        setProducts(response.data)
       }
-      if (categoryId) {
-        url += `&category=${categoryId}`
-      }
-      const response = await api.get(url)
-      setProducts(response.data)
     }
-    fetchData()
-  }, [currentPage, categoryId, sortBy])
+    fetchProducts()
+  }, [currentPage, categoryId, sortBy, searchQuery]) // ← Adicionou searchQuery aqui
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page)

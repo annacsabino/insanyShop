@@ -1,17 +1,23 @@
+'use client'
+
 import { CategoriesSection } from '@/components/CategoriesSection'
 import { ProductSection } from '@/components/ProductSection'
 import { SubHeader } from '@/components/SubHeader'
-
-//Todo: Ajustar titulo do card para h3
-//Todo: Ajustar grid template do card para colocar repeat(3, 1fr)
-//Todo: Ajsutar grid das categorias para o mobile
-//Todo: Tirar o h1 da logo
+import { useSearchContext } from '@/contexts/SearchContext'
 
 export default function Home() {
+  const { searchQuery } = useSearchContext()
+
   return (
     <main>
       <SubHeader />
-      <ProductSection title="Todos os produtos" />
+      <ProductSection
+        title={'Todos os produtos'}
+        description={
+          searchQuery ? `Resultados para "${searchQuery}"` : undefined
+        }
+        searchQuery={searchQuery}
+      />
       <CategoriesSection />
     </main>
   )
