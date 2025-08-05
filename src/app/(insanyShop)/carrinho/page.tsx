@@ -48,18 +48,20 @@ interface ProductProps {
 }
 
 export default function CartPage() {
-  const [products, setProducts] = useState<ProductProps[]>(() => {
+  const [products, setProducts] = useState<ProductProps[]>([])
+  useEffect(() => {
     const storedCart = localStorage.getItem('cart-product')
-    return storedCart ? JSON.parse(storedCart) : []
-  })
+    if (storedCart) {
+      setProducts(JSON.parse(storedCart))
+    }
+  }, [])
 
   const removeFromCart = (id: number) => {
     setProducts((prevProducts) => prevProducts.filter((item) => item.id !== id))
   }
 
   useEffect(() => {
-    const data = JSON.stringify(products)
-    localStorage.setItem('cart-product', data)
+    localStorage.setItem('cart-product', JSON.stringify(products))
   }, [products])
 
   return (
