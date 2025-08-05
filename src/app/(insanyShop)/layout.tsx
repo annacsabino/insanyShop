@@ -1,3 +1,5 @@
+import StyledComponentsRegistry from '@/lib/StyledComponentsRegistry'
+
 import type { Metadata } from 'next'
 import { Inter, Saira } from 'next/font/google'
 
@@ -30,11 +32,13 @@ export default function RootLayout({
   return (
     <html lang="pt-br">
       <body className={`${inter.variable} ${saira.variable} antialiased`}>
-        <ThemeProviderNext>
-          <GlobalStyle />
-          <Header />
-          {children}
-        </ThemeProviderNext>
+        <StyledComponentsRegistry>
+          <ThemeProviderNext>
+            <GlobalStyle />
+            <Header />
+            {children}
+          </ThemeProviderNext>
+        </StyledComponentsRegistry>
       </body>
     </html>
   )
