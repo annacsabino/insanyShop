@@ -33,10 +33,14 @@ export const PagintionButton = styled.button<PaginationButtonProps>`
     $isActive ? `1px solid ${theme.colors.purple}` : 'none'};
   border-radius: 8px;
   cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
 
-  a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.bgLight};
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
   }
 `
