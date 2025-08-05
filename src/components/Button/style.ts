@@ -4,7 +4,7 @@ import styled, { css } from 'styled-components'
 
 export type ButtonVariant = 'primary' | 'secondary'
 interface ButtonContainerProps {
-  variant: ButtonVariant
+  $variant: ButtonVariant
 }
 
 const buttonVariants = {
@@ -21,7 +21,7 @@ const buttonVariants = {
 }
 
 export const ButtonContainer = styled.button<ButtonContainerProps>`
-  ${({ variant }) => buttonVariants[variant]}
+  ${({ $variant }) => buttonVariants[$variant]}
   display: flex;
   gap: 1rem;
   align-items: center;

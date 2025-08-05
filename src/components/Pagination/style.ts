@@ -3,7 +3,7 @@
 import styled from 'styled-components'
 
 interface PaginationButtonProps {
-  isActive?: boolean
+  $isActive?: boolean
 }
 
 export const PaginationContainer = styled.div`
@@ -25,12 +25,12 @@ export const PagintionButton = styled.li<PaginationButtonProps>`
   display: flex;
   align-items: center;
   justify-content: center;
-  color: ${({ theme, isActive }) =>
-    isActive ? theme.colors.purple : theme.colors.textDark};
-  background-color: ${({ theme, isActive }) =>
-    isActive ? theme.colors.bgLight : theme.colors.lightGray};
-  border: ${({ theme, isActive }) =>
-    isActive ? `1px solid ${theme.colors.purple}` : 'none'};
+  color: ${({ theme, $isActive }) =>
+    $isActive ? theme.colors.purple : theme.colors.textDark};
+  background-color: ${({ theme, $isActive }) =>
+    $isActive ? theme.colors.bgLight : theme.colors.lightGray};
+  border: ${({ theme, $isActive }) =>
+    $isActive ? `1px solid ${theme.colors.purple}` : 'none'};
   border-radius: 8px;
   cursor: pointer;
 

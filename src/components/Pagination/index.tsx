@@ -16,7 +16,7 @@ export function Pagination() {
             />
           </a>
         </PagintionButton>
-        <PagintionButton isActive>
+        <PagintionButton $isActive>
           <a href="">1</a>
         </PagintionButton>
         <PagintionButton>

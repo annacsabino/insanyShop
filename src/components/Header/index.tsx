@@ -1,3 +1,7 @@
+'use client'
+
+import { useRouter } from 'next/navigation'
+
 import { Container } from '@/styles/patterns'
 import {
   HeaderContainer,
@@ -11,6 +15,7 @@ import {
 } from './style'
 
 export function Header() {
+  const router = useRouter()
   return (
     <HeaderContainer>
       <Container>
@@ -25,7 +30,7 @@ export function Header() {
               />
               <SearchIcon />
             </SearchContainer>
-            <CartIcon />
+            <CartIcon onClick={() => router.push('/carrinho')} />
           </HeaderActions>
         </NavContent>
       </Container>
