@@ -9,7 +9,7 @@ import {
   SelectDropdown,
   SelectDropdownItems
 } from '@/components/SubHeader/style'
-import { Container } from '@/styles/patterns'
+import { Container } from '@/styles/themes/patterns'
 import { BreadcrumbWrapper } from './style'
 export default function CategoryPage() {
   return (

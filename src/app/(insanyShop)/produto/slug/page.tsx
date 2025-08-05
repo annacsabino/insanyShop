@@ -12,7 +12,7 @@ import {
   ProductPrice,
   ProductPageContainer
 } from './style'
-import { Container } from '@/styles/patterns'
+import { Container } from '@/styles/themes/patterns'
 import { BackButton } from '@/components/BackButton'
 
 export default function ProductPage() {

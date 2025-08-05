@@ -1,4 +1,4 @@
-import { Container, TitleSection } from '@/styles/patterns'
+import { Container, TitleSection } from '@/styles/themes/patterns'
 import {
   CategoriesSectionWrapper,
   CategoryCardWrapper,
