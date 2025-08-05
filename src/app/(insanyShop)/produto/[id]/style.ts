@@ -15,6 +15,10 @@ export const ProductPageContainer = styled.div`
 export const ProductPageContent = styled.main`
   display: flex;
   gap: 2rem;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
 `
 
 export const ProductImageContainer = styled.div`

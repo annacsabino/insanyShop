@@ -40,7 +40,7 @@ export default function ProductPage() {
   }, [productId])
   const handleAddToCart = () => {
     if (product) {
-      const success = addToCart(product)
+      addToCart(product)
     }
   }
 
@@ -56,6 +56,8 @@ export default function ProductPage() {
       </ProductItemSection>
     )
   }
+
+  const productInCart = isInCart(product.id)
 
   return (
     <ProductItemSection>
@@ -81,14 +83,14 @@ export default function ProductPage() {
                 <h2>Descrição</h2>
                 <p>{product?.description}</p>
               </ProductDescriptionWrapper>
-              <Button onClick={handleAddToCart}>
+              <Button onClick={handleAddToCart} disabled={isInCart(product.id)}>
                 <Image
                   src="/assets/icons/cart.svg"
                   alt="Icone de carrinho de compra"
                   width={24}
                   height={24}
                 />
-                {isInCart(product?.id || 0) ? 'Já no carrinho' : 'Adicionar'}
+                {productInCart ? 'Já no carrinho' : 'Adicionar'}
               </Button>
             </ProductInfoContainer>
           </ProductPageContent>

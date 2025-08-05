@@ -23,7 +23,9 @@ export const SelectInputWrapper = styled.div`
 `
 
 export const SelectDropdown = styled.div`
-  display: none;
+  position: absolute;
+  display: flex;
+  min-width: 11.5rem;
   width: fit-content;
   margin-top: 0.37rem;
   padding: 0.75rem 1rem;

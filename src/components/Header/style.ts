@@ -69,6 +69,7 @@ export const CartIcon = styled.div`
   height: 1.5rem;
   background: url('/assets/icons/shopping-cart.svg') no-repeat center center;
   background-size: cover;
+  cursor: pointer;
 `
 
 export const CartIconWrapper = styled.div`
