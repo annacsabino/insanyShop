@@ -1,4 +1,4 @@
-import StyledComponentsRegistry from '@/lib/StyledComponentsRegistry'
+import StyledComponentsRegistry from '@/app/lib/registry'
 
 import type { Metadata } from 'next'
 import { Inter, Saira } from 'next/font/google'
